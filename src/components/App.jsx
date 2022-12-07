@@ -39,6 +39,7 @@ export const App = () => {
   };
 
   const feedbackOptionsList = { good, bad, neutral };
+  const totalCount = countTotalFeedback();
 
   return (
     <div
@@ -53,18 +54,18 @@ export const App = () => {
         <FeedbackOptions
           options={Object.keys(feedbackOptionsList)}
           onLeaveFeedback={onBtnClick}
-        ></FeedbackOptions>
+        />
       </Section>
 
       <Section title="Statistics">
-        {countTotalFeedback() > 0 ? (
+        {totalCount > 0 ? (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            total={countTotalFeedback()}
+            total={totalCount}
             positivePercentage={countPositiveFeedbackPercentage()}
-          ></Statistics>
+          />
         ) : (
           <Notification message="There is no feedback" />
         )}
